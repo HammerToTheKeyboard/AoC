@@ -11,3 +11,5 @@ for(var m = 0; m < measurements.length - 3; m++){
 }
 
 console.log(i)
+
+//Solved. Answer = 1822

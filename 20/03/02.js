@@ -25,5 +25,4 @@ let answer = slide(1,1) * slide(3,1) * slide(5,1) * slide(7,1) * slide(1,2)
 
 console.log(answer)
 
-
-//Solved. Golfed. Answer = 254
+//Solved. Answer = 
