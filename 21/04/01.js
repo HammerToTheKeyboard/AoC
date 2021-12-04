@@ -63,4 +63,4 @@ const a = parseInt(call) * s
 
 console.log("answer: ",a)
 
-//unsolved. calculated answers of 54366, 40128, 20213, 25083 are incorrect
+//Solved. Answer = 21607
