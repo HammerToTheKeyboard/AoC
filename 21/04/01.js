@@ -6,6 +6,7 @@ const rawInput = fs.readFileSync(path.resolve(__dirname,'input')).toString()
 const numbers = rawInput.split(/\n/g,1)[0].split(",")
 const boards = rawInput.split(/\n\s*\n/g).slice(1).map(e => e.split(/\n/g).map(e => e.split(/\D/g).filter(e => e)))
 let called = []
+let call
 
 function makeColumn(board, pos){
     const column = board.map(e => e.slice(pos,pos+1))
@@ -29,7 +30,7 @@ function checkBingo(board){
 
 function testBoards(){
     for(number in numbers){
-        const call = numbers[number]
+        call = numbers[number]
         called.push(call)
         for(board in boards){
             if(checkBingo(boards[board])){
@@ -50,8 +51,8 @@ function sumUnmarked(board){
 
 const b = testBoards()
 const s = sumUnmarked(b)
-const a = parseInt(b) * s
+const a = parseInt(call) * s
 
 console.log("answer",a)
 
-//unsolved. calculated answer of 54366 is incorrect
+//unsolved. calculated answers of 54366, 20213 are incorrect
