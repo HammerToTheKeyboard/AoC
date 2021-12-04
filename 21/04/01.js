@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require("path");
 const rawInput = fs.readFileSync(path.resolve(__dirname,'input')).toString()
 
-const numbers = rawInput.split(/\n/g,1).map(e => e.split(","))[0]
+const numbers = rawInput.split(/\n/g,1)[0].split(",")
 const boards = rawInput.split(/\n\s*\n/g).slice(1).map(e => e.split(/\n/g).map(e => e.split(/\D/g).filter(e => e)))
 let called = []
 
