@@ -14,25 +14,26 @@ function makeColumn(board, pos){
 }
 
 function checkBingo(board){
-    //rows
     for(row in board){
-        const test = board[row].every(e => called.includes(e))
-        if(test){
+        //rows
+        const testR = board[row].every(e => called.includes(e))
+        if(testR){
             console.log(board[row])
             console.log("row: " + row)
             return true
+        } else {
+            //columns
+            const column = makeColumn(board, row)
+            const testC = column.every(e => called.includes(e))
+            if(testC){
+                console.log(column)
+                console.log("column: " + row)
+                return true
+            } else{
+                return false
+            }
         } 
     }
-    //columns
-    for(row in board){
-        const column = makeColumn(board, row)
-        const test = column.every(e => called.includes(e))
-        if(test){
-            console.log("column: " + row)
-            return true
-        } 
-    }
-    return false
 }
 
 function testBoards(){
@@ -63,4 +64,4 @@ const a = parseInt(call) * s
 
 console.log("answer",a)
 
-//unsolved. calculated answers of 54366, 20213 are incorrect
+//unsolved. calculated answers of 54366, 40128, 20213 are incorrect
