@@ -14,23 +14,24 @@ function makeColumn(board, pos){
 }
 
 function checkBingo(board){
-    //columns
-    for(row in board){
-        const column = makeColumn(board, row)
-        const test = column.every(e => called.includes(e))
-        if(test) {
-            console.log("column:" + row)
-            return true
-        }
-    }
     //rows
     for(row in board){
         const test = board[row].every(e => called.includes(e))
         if(test){
-            console.log("row:" + row)
+            console.log(board[row])
+            console.log("row: " + row)
             return true
         } 
-    } 
+    }
+    //columns
+    for(row in board){
+        const column = makeColumn(board, row)
+        const test = column.every(e => called.includes(e))
+        if(test){
+            console.log("column: " + row)
+            return true
+        } 
+    }
     return false
 }
 
@@ -38,15 +39,13 @@ function testBoards(){
     for(number in numbers){
         call = numbers[number]
         called.push(call)
-        if(called.length > 5){
-            for(board in boards){
-                if(checkBingo(boards[board])){
-                    console.log("call:",call,"board:",parseInt(board)+1,"number:",number)
-                    return boards[board]
-                } 
-            }
+        for(board in boards){
+            if(checkBingo(boards[board])){
+                console.log("call:",call,"board:",board,"number:",number)
+                console.log("board:" + boards[board])
+                return boards[board]
+            } 
         }
-        
     }
     return "bruh"
 }
