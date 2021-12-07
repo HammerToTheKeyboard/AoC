@@ -5,11 +5,15 @@ const rawInput = fs.readFileSync(path.resolve(__dirname,'input')).toString()
 const input = rawInput.split(",").map(e => parseInt(e))
 
 const pos = input.sort((a,b) => a - b)
-const avgPos = (Math.round(pos.reduce((a,b) => a + b)/input.length))-1
+const avgPos = (Math.round(pos.reduce((a,b) => a + b)/input.length))
 
-const dis = pos.map(e => Math.abs(e - avgPos))
-const answer= dis.map(e => e*(e+1)/2).reduce((a,b) => a + b)
 
-console.log(answer)
+const dis1 = pos.map(e => Math.abs(e - avgPos))
+const answer1= dis1.map(e => e*(e+1)/2).reduce((a,b) => a + b)
+
+const dis2 = pos.map(e => Math.abs(e - (avgPos-1)))
+const answer2 = dis2.map(e => e*(e+1)/2).reduce((a,b) => a + b)
+
+console.log(Math.min(answer1, answer2))
 
 //Solved. Answer = 98368490
