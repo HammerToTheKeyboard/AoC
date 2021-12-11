@@ -18,11 +18,20 @@ let iterations = 0
 
 while(unknown.length > 0){
     let origin = point = unknown.shift()
-    move(origin, point, [], 0)
+    move(origin, point, [point])
+}
+
+function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    return arr
 }
 
 function move(origin, point, path){
     try {
+        
         iterations++
 
         let x = point.x
@@ -31,11 +40,11 @@ function move(origin, point, path){
 
         let adjacent = points.filter(point => (point.y == y && (point.x == x-1 || point.x == x+1)) || (point.x == x && (point.y == y-1 || point.y == y+1)))
         let next = adjacent.find(point => point.value < value)
-        if(!next) next = adjacent.find(point => point.value <= value)
+        if(!next) next = shuffle(adjacent).find(point => point.value <= value)
 
         if(next){
             point = next
-            path.push(point)
+            if(!path.includes(point)) path.push(point)
             move(origin, next, path)
         } else {
             const unknownpath = path.filter(point => unknown.includes(point))
@@ -46,13 +55,12 @@ function move(origin, point, path){
         } 
         return
     } catch (error) {
-        console.log(error)
+        //console.log(error)
     }
 }
 
 console.log("Iterations: " + iterations)
 console.log("Total of non 9 fields: " + total)
-
 const answer2 = minima.sort((a,b) => b.basin - a.basin).slice(0,3).map(point => point.basin).reduce((a,b) => a * b)
 
 const answer1 = minima.map(point => point.value).reduce((a,b) => a + b + 1, 0)     
