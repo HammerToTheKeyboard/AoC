@@ -1,4 +1,3 @@
-const { on } = require('events');
 const fs = require('fs')
 const path = require("path");
 const rawInput = fs.readFileSync(path.resolve(__dirname,'input')).toString()
