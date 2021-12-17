@@ -1,7 +1,7 @@
 const { on } = require('events');
 const fs = require('fs')
 const path = require("path");
-const rawInput = fs.readFileSync(path.resolve(__dirname,'input1')).toString()
+const rawInput = fs.readFileSync(path.resolve(__dirname,'input')).toString()
 
 const input = rawInput.split(/\n/g).map(e => e.split("|").map(e => e.trim().split(" ")))    
 
@@ -26,14 +26,14 @@ for(i in input){
 
     var vThree = signals.filter(e => vSeven.every(f => e.includes(f))).find(e => e.length == 5)
 
-    var vD = vThree.filter(e => !vSeven.every(f => f.includes(e))).find(e =>  e != vG)
+    var vD = vThree.filter(e => !vSeven.includes(e)).find(e =>  e != vG)
 
     //Unnecessary. Totally didnt waste a lot of time on this
 
     var vB = vFour.filter(e => !vOne.includes(e)).find(e => e != vD)
     //console.log(vG, vB, vThree)
     //break
-    // var vZero = vEight.filter(e => e != vD)
+    // var vZero = vEight.filter(e => e != vD)   
 
     // var vFive = signals.filter(e => e.length == 5).find(e => e.includes(vB))
 
@@ -72,6 +72,6 @@ const answer = outputs.reduce((a,b) => a + b, 0)
 console.log("Answer: "+ answer)
 // break
 
-//Unsolved. 1144592, 1108337, 998460, 1126221 wrong  
+//Solved. Answer = 102464
 
 
