@@ -58,8 +58,7 @@ async function move(path){
                 let newPath = Array.from(path)
                 newPath.push(nextCave)
                 paths.push(newPath)
-                if(nextCave.id === "end") continue
-                else move(newPath)
+                if(nextCave.id !== "end") move(newPath)
             }
         }
         paths = paths.filter(p => p != path)
@@ -80,3 +79,7 @@ function run(){
 }
 
 run()
+
+
+//idea: run cave Setup a bunch of times, each time granting just one small cave a visit counter limit of 2. 
+//then do a pathsearch just like part 1 on each of the cave setups. dont forget to get rid of duplicate paths
