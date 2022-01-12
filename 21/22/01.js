@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require("path");
-const rawInput = fs.readFileSync(path.resolve(__dirname,'input1')).toString()
+const rawInput = fs.readFileSync(path.resolve(__dirname,'input')).toString()
 
 const lines = rawInput.trim().split("\n").map(line => line.replace(/[\, | \.\. | x | y | z | \= ]/g, " ").replace(/  +/g, " ").split(" "))
 
